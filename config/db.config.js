@@ -5,7 +5,7 @@ const connectionString = {
     connectionLimit : 100,
     host : 'localhost',
     user : 'root',
-    password : '',
+    password : 'admin',
     database : 'web_db',
     debug : false,
     port : 3306

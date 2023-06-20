@@ -1,6 +1,6 @@
 const express = require('express');
-// const mongoose = require('mongoose');
-//const dbConfig = require('./config/db.config');
+const mongoose = require('mongoose');
+const dbConfig = require('./config/db.config');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const auth = require('./middlewares/auth');
@@ -18,18 +18,18 @@ app.use(bodyParser.json());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', '*');
-//      res.header('Access-Control-Allow-Headers', 'append,delete,entries,foreach,get,has,keys,set,values,Authorization,Content-Type,Content-Length,Host,User-Agent,Accept,Accept-Encoding,Connection,Postman-Token,Cookie');
-//      res.header('Access-Control-Allow-Methods', 'GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH');
+app.use((req, res, next) => {
+     res.header('Access-Control-Allow-Origin', '*');
+     res.header('Access-Control-Allow-Headers', 'append,delete,entries,foreach,get,has,keys,set,values,Authorization,Content-Type,Content-Length,Host,User-Agent,Accept,Accept-Encoding,Connection,Postman-Token,Cookie');
+     res.header('Access-Control-Allow-Methods', 'GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH');
      
-//   /*   $method = $_SERVER['REQUEST_METHOD'];
-//      if ($method == "OPTIONS"){
-//         res.sendStatus(200);
-//      }
-//      */
-//      next() 
-//    });
+  $method = $_SERVER['REQUEST_METHOD'];
+     if ($method == "OPTIONS"){
+        res.sendStatus(200);
+     }
+     
+     next() 
+    });
 
 
 
@@ -57,16 +57,16 @@ app.use("/auth", require("./routes/auth.routes"));
 
 app.use(errors.errorHandler);
 
-// app.use((req, res, next) => {
+app.use((req, res, next) => {
     
-//     $method = $_SERVER['REQUEST_METHOD'];
-//      if ($method == "OPTIONS"){
-//       res.statusMessage("OK");
-//         res.status(200);
-//      }
+     $method = $_SERVER['REQUEST_METHOD'];
+     if ($method == "OPTIONS"){
+       res.statusMessage("OK");
+         res.status(200);
+      }
  
-//      next();
-//    });
+      next();
+    });
 
 app.listen (process.env.port || 4000, function () {
     console.log("Ready to Go!");

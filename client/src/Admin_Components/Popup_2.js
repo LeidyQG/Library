@@ -24,7 +24,7 @@ export default function ResponsiveDialog(props) {
     const User = props.user;
     const Flag = props.flag;
     console.log(User);
-    //console.log(Library);
+    console.log(Library);
 
 
 
@@ -54,8 +54,8 @@ export default function ResponsiveDialog(props) {
             user: User
 
         }).then(response => {
-            //sessionStorage.setItem('Manager_ID', response.data.data.message.info2[0].User_ID);
-            //window.location.assign("/admin/CreateLibrary");
+            sessionStorage.setItem('Manager_ID', response.data.data.message.info2[0].User_ID);
+            window.location.assign("/admin/CreateLibrary");
             setLoading(false);
             setNotify({
                 isOpen: true,
@@ -65,10 +65,10 @@ export default function ResponsiveDialog(props) {
 
 
         }).catch(error => {
-            // console.log("lol");
+            console.log("lol");
             setLoading(false);
             if (error.response.status === 500) {
-                //setError(error.response.data.data.message || "Enter a valid email");
+                setError(error.response.data.data.message || "Enter a valid email");
                 setNotify({
                     isOpen: true,
                     message: error.response.data.data.message,
@@ -104,8 +104,8 @@ export default function ResponsiveDialog(props) {
             user: User
 
         }).then(response => {
-            //sessionStorage.setItem('Manager_ID', response.data.data.message.info2[0].User_ID);
-            //window.location.assign("/admin/CreateLibrary");
+            sessionStorage.setItem('Manager_ID', response.data.data.message.info2[0].User_ID);
+            window.location.assign("/admin/CreateLibrary");
             setLoading(false);
             setNotify({
                 isOpen: true,
@@ -115,10 +115,10 @@ export default function ResponsiveDialog(props) {
 
 
         }).catch(error => {
-            // console.log("lol");
+            console.log("lol");
             setLoading(false);
             if (error.response.status === 500) {
-                //setError(error.response.data.data.message || "Enter a valid email");
+                setError(error.response.data.data.message || "Enter a valid email");
                 setNotify({
                     isOpen: true,
                     message: error.response.data.data.message,
